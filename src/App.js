@@ -3,7 +3,7 @@ import ItemListContainer from './components/ItemListContainer'
 
 const App = () => (
     <>
-      <NavBar titulo='Titulo' />
+      <NavBar titulo='Aware' />
       <ItemListContainer/>
     </>
 )
