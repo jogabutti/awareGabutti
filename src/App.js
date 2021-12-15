@@ -4,7 +4,7 @@ import ItemListContainer from './components/ItemListContainer'
 const App = () => (
     <>
       <NavBar titulo='Aware' />
-      <ItemListContainer/>
+      <ItemListContainer greeting="Lista de articulos"/>
     </>
 )
 
