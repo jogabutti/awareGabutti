@@ -1,5 +1,5 @@
-import * as React from 'react';
-import Item from "./Item"
+import React from 'react';
+import Item from "../Item/Item"
 import { makeStyles } from '@mui/styles';
 
 const useStyles = makeStyles({
@@ -17,9 +17,9 @@ const ItemList = ({productos})=>{
     return(
         <div>
             {productos.map(producto=>{
-                    return <div className={classes.card}>
+                return <div className={classes.card}>
                             <Item producto={producto}/>
-                           </div>
+                        </div>
             })}
         </div>
     )

@@ -6,8 +6,13 @@ import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
+import {Link} from  'react-router-dom'
 
-const pages = ['Productos', 'Login', 'Contacto'];
+const pages = [
+  {id:"1", address:"/", text:"Ver todo"},
+  {id:"2", address:"/category/exterior", text:"Exterior"},
+  {id:"3", address:"/category/interior", text:"Interior"}
+];
 
 const NavBar = ({titulo}) => {
 
@@ -29,12 +34,9 @@ const NavBar = ({titulo}) => {
           </Box>
           <Box sx={{ flexGrow: 1, display: { display: 'flex', direction:'row', justifyContent:'flex-end'  } }}>
             {pages.map((page) => (
-              <Button
-                key={page}
-                sx={{ my: 2, color: 'white', display: 'block'}}
-              >
-                {page}
-              </Button>
+              <Link to={page.address}>
+                {page.text}
+              </Link>
             ))}
           </Box>
           <CartWidget/>
