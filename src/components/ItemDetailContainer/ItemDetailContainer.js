@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import Typography from '@mui/material/Typography';
 import {ItemDetail} from "../ItemDetail/ItemDetail"
 import {useParams} from 'react-router-dom'
 import {data} from '../../Productos/data'
@@ -11,7 +12,7 @@ const useStyles = makeStyles({
     }
 })
 
-const ItemDetailContainer = ()=>{
+const ItemDetailContainer = ({greeting})=>{
     const classes = useStyles();
     const [productos, setProductos]= React.useState({})
     const [loading, setLoading]= useState(true)
@@ -34,6 +35,9 @@ const ItemDetailContainer = ()=>{
             <h2> CARGANDO...</h2> 
         :  
         <div className={classes.card}>
+            <Typography variant="h4" gutterBottom >
+                {greeting}
+            </Typography>
             <ItemDetail {...productos}/>
         </div>
     )

@@ -44,15 +44,15 @@ export const ItemDetail = ({
       <Card sx={{ maxWidth: "90%"}} className={classes.card}>
         <CardMedia
           component="img"
-          height="500em"
+          height="450em"
           image={image}
           alt="plantas"
         />
-        <div className={classes.cardContent}>
-          <CardContent >
-            <Typography gutterBottom variant="h5" component="div">
-              {title}
-            </Typography>
+        <CardContent>
+          <Typography gutterBottom variant="h5" component="div">
+            {title}
+          </Typography>
+          <div className={classes.cardContent}>
             <Typography variant="body2" color="text.secondary">
               {need==="Sombra" ? <Brightness6Icon/> : <LightModeIcon/>}
             </Typography>
@@ -62,13 +62,13 @@ export const ItemDetail = ({
             <Typography variant="body2" color="text.secondary">
               <AttachMoneyIcon/>
               {precio}
-            </Typography>        
-          </CardContent>
-          <CardActions>
-            <Button size="small">Agregar al carrito</Button>
-            <Button size="small">Leeer Más</Button>
-          </CardActions>
-        </div>
+            </Typography> 
+          </div>       
+        </CardContent>
+        <CardActions >
+          <Button size="small">Agregar al carrito</Button>
+          <Button size="small">Leeer Más</Button>
+        </CardActions>
       </Card>
     )
 }
