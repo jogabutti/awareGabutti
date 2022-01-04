@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react'
+import Typography from '@material-ui/core/Typography';
 import ItemList from "../ItemList/ItemList"
 import {data} from "../../Productos/data"
 import {useParams} from "react-router-dom"
@@ -24,10 +25,12 @@ const ItemListContainer = ({greeting}) => {
 
     return (
         loading ? 
-            <h2> CARGANDO...</h2> 
+            <Typography variant="h4" gutterBottom > CARGANDO...</Typography>
         :
             <div>
-                <h1> {greeting}</h1>
+                <Typography variant="h4" gutterBottom >
+                    {greeting}
+                </Typography>
                 <ItemList productos={productos}/> 
             </div>
     )

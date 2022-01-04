@@ -6,18 +6,17 @@ const useStyles = makeStyles({
     card:{
         display:"flex",
         direction:"row",
-        justifyContent:"center",
+        justifyContent:"space-around",
         alignItems:"center",
-        margin:"15px"
     }
 })
 
 const ItemList = ({productos})=>{
     const classes = useStyles();
     return(
-        <div>
+        <div className={classes.card}>
             {productos.map(producto=>{
-                return <div className={classes.card}>
+                return <div>
                             <Item producto={producto}/>
                         </div>
             })}

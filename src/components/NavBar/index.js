@@ -7,6 +7,18 @@ import IconButton from '@mui/material/IconButton';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import {Link} from  'react-router-dom'
+import { makeStyles } from '@mui/styles';
+
+const useStyles = makeStyles({
+    links:{
+        textDecoration:"none",
+        color:"white",
+        padding:"2%"
+    },
+    navBar:{
+      backgroundColor:"#87AAAA"
+    }
+})
 
 const pages = [
   {id:"1", address:"/", text:"Ver todo"},
@@ -15,10 +27,10 @@ const pages = [
 ];
 
 const NavBar = ({titulo}) => {
-
+  const classes = useStyles();
   return (
-    <AppBar position='static'>
-      <Container maxWidth="xl">
+    <AppBar position='static' >
+      <Container maxWidth="xl" className={classes.navBar}>
         <Toolbar>
             <IconButton
               size="large"
@@ -34,7 +46,7 @@ const NavBar = ({titulo}) => {
           </Box>
           <Box sx={{ flexGrow: 1, display: { display: 'flex', direction:'row', justifyContent:'flex-end'  } }}>
             {pages.map((page) => (
-              <Link to={page.address}>
+              <Link to={page.address} className={classes.links}>
                 {page.text}
               </Link>
             ))}

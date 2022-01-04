@@ -1,21 +1,18 @@
 import React, {useState, useEffect} from 'react';
 import {ItemDetail} from "../ItemDetail/ItemDetail"
-import { makeStyles } from '@mui/styles';
 import {useParams} from 'react-router-dom'
 import {data} from '../../Productos/data'
+import { makeStyles } from '@mui/styles';
 
-/* const useStyles = makeStyles({
+const useStyles = makeStyles({
     card:{
-        display:"flex",
-        direction:"row",
-        justifyContent:"center",
-        alignItems:"center",
-        margin:"15px"
+        width: "100%",
+        height:"100%"
     }
-}) */
+})
 
 const ItemDetailContainer = ()=>{
-    /* const classes = useStyles(); */
+    const classes = useStyles();
     const [productos, setProductos]= React.useState({})
     const [loading, setLoading]= useState(true)
     const { prodId } = useParams()
@@ -36,7 +33,9 @@ const ItemDetailContainer = ()=>{
         loading ? 
             <h2> CARGANDO...</h2> 
         :  
-        <ItemDetail {...productos}/>
+        <div className={classes.card}>
+            <ItemDetail {...productos}/>
+        </div>
     )
 }
 
