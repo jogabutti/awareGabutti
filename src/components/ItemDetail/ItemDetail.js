@@ -29,13 +29,11 @@ const useStyles = makeStyles({
 })
 
 export const ItemDetail = ({
-    prodId,
     title,
     need,
     dificult,
     precio,
-    image,
-    category
+    image
 }) =>{
   const classes = useStyles();
     return(

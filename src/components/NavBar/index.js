@@ -5,7 +5,6 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import Container from '@mui/material/Container';
-import Button from '@mui/material/Button';
 import {Link} from  'react-router-dom'
 import { makeStyles } from '@mui/styles';
 
@@ -39,7 +38,7 @@ const NavBar = ({titulo}) => {
               aria-haspopup="true"
               color="inherit"
             >
-              <img src='./logo.png' style={{width:"60px", height:"60px", borderRadius: "100px"}}/>
+              <img src='./logo.png' alt="plantas" style={{width:"60px", height:"60px", borderRadius: "100px"}}/>
             </IconButton>
           <Box sx={{ flexGrow: 1, display:'flex' }}>
             {titulo}

@@ -11,8 +11,20 @@ import LightModeIcon from '@mui/icons-material/LightMode';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import ThumbDownIcon from '@mui/icons-material/ThumbDown';
 import {Link} from 'react-router-dom'
+import { makeStyles } from '@mui/styles';
+
+const useStyles = makeStyles({
+  card:{
+      height:"100%",
+      display:"flex",
+      direction:"row",
+      justifyContent:"space-around",
+      alignItems:"center",
+  },
+})
 
 const Item = ({producto}) => {
+  const classes = useStyles();
   return (
     <Link to={`/producto/${producto.prodId}`}> 
       <Card sx={{ maxWidth: 300}}>
@@ -20,24 +32,26 @@ const Item = ({producto}) => {
           component="img"
           height="140"
           image={producto.image}
-          alt="green iguana"
+          alt="planta"
         />
-        <CardContent>
+        <CardContent >
           <Typography gutterBottom variant="h5" component="div">
             {producto.title}
           </Typography>
-          <Typography variant="body2" color="text.secondary">
-            {producto.need==="Sombra" ? <Brightness6Icon/> : <LightModeIcon/>}
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            {producto.dificult>2 ? <ThumbDownIcon/> : <ThumbUpIcon/> }
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            <AttachMoneyIcon/>
-            {producto.precio}
-          </Typography>        
+          <div  className={classes.card}>
+            <Typography variant="body2" color="text.secondary">
+              {producto.need==="Sombra" ? <Brightness6Icon/> : <LightModeIcon/>}
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+              {producto.dificult>2 ? <ThumbDownIcon/> : <ThumbUpIcon/> }
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+              <AttachMoneyIcon/>
+              {producto.precio}
+            </Typography>        
+          </div>
         </CardContent>
-        <CardActions>
+        <CardActions >
           <Button size="small">Agregar al carrito</Button>
           <Button size="small">Leeer Más</Button>
         </CardActions>
