@@ -38,7 +38,7 @@ const NavBar = ({titulo}) => {
               aria-haspopup="true"
               color="inherit"
             >
-              <img src='./logo.png' alt="plantas" style={{width:"60px", height:"60px", borderRadius: "100px"}}/>
+              <img src='/logo.png' alt="plantas" style={{width:"60px", height:"60px", borderRadius: "100px"}}/>
             </IconButton>
           <Box sx={{ flexGrow: 1, display:'flex' }}>
             {titulo}

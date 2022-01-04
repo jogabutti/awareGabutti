@@ -5,7 +5,7 @@ export const data = [
         "need": "Sol",
         "dificult":3,
         "precio":850,
-        "image": "./rosa.jpg",
+        "image": "/rosa.jpg",
         "category": "exterior"
     },
     {
@@ -14,7 +14,7 @@ export const data = [
         "need": "Sol",
         "dificult":1,
         "precio":150,
-        "image": "./margarita.jpg",
+        "image": "/margarita.jpg",
         "category": "exterior"
     },
     {
@@ -23,7 +23,7 @@ export const data = [
         "need": "Sombra",
         "dificult":1,
         "precio":300,
-        "image": "./geranio.jpg",
+        "image": "/geranio.jpg",
         "category": "exterior"
     },
     {
@@ -32,7 +32,7 @@ export const data = [
         "need": "Sombra",
         "dificult":3,
         "precio":550,
-        "image": "./monstera.jpg",
+        "image": "/monstera.jpg",
         "category": "interior"
     }
 ]

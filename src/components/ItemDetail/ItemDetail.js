@@ -19,13 +19,17 @@ const useStyles = makeStyles({
         direction:"row",
         justifyContent:"space-around",
         alignItems:"center",
+        margin:"2%"
     },
     cardContent:{
       display:"flex",
       direction:"column",
       justifyContent:"center",
       alignItems:"center",
-  }
+    },
+    picture:{
+      height: "40%"
+    }
 })
 
 export const ItemDetail = ({
@@ -40,7 +44,7 @@ export const ItemDetail = ({
       <Card sx={{ maxWidth: "90%"}} className={classes.card}>
         <CardMedia
           component="img"
-          height="50%"
+          height="500em"
           image={image}
           alt="plantas"
         />
