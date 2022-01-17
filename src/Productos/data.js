@@ -6,7 +6,8 @@ export const data = [
         "dificult":3,
         "precio":850,
         "image": "/rosa.jpg",
-        "category": "exterior"
+        "category": "exterior",
+        "stock": 10
     },
     {
         "prodId":"2",
@@ -15,7 +16,8 @@ export const data = [
         "dificult":1,
         "precio":150,
         "image": "/margarita.jpg",
-        "category": "exterior"
+        "category": "exterior",
+        "stock": 12
     },
     {
         "prodId":"3",
@@ -24,7 +26,8 @@ export const data = [
         "dificult":1,
         "precio":300,
         "image": "/geranio.jpg",
-        "category": "exterior"
+        "category": "exterior",
+        "stock": 10
     },
     {
         "prodId":"4",
@@ -33,6 +36,7 @@ export const data = [
         "dificult":3,
         "precio":550,
         "image": "/monstera.jpg",
-        "category": "interior"
+        "category": "interior",
+        "stock": 10
     }
 ]

@@ -1,4 +1,5 @@
-import React from "react"
+import React, {useContext} from "react"
+import { CartContext } from '../../context/CartContext';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
@@ -25,9 +26,11 @@ const useStyles = makeStyles({
 
 const Item = ({producto}) => {
   const classes = useStyles();
+  const {removeItems, addItems, clear, isInCart}= useContext(CartContext)
+
   return (
-    <Link to={`/producto/${producto.prodId}`}> 
-      <Card sx={{ maxWidth: 300}}>
+    <Card sx={{ maxWidth: 300}}>
+      <Link to={`/producto/${producto.prodId}`}>
         <CardMedia
           component="img"
           height="140"
@@ -51,12 +54,16 @@ const Item = ({producto}) => {
             </Typography>        
           </div>
         </CardContent>
-        <CardActions >
-          <Button size="small">Agregar al carrito</Button>
-          <Button size="small">Leeer Más</Button>
-        </CardActions>
-      </Card>
-    </Link>
+      </Link>    
+      <CardActions >
+        <Button size="small" onClick={()=>addItems(producto, 1)}>Agregar al carrito</Button>
+        <Button size="small" onClick={()=>removeItems(producto.prodId)}>Quitar del carrito</Button>
+        <Button size="small" onClick={()=>clear(producto.prodId)}>Vaciar el carrito</Button>
+        <Button> {isInCart(producto.prodId) ? "Ya elegido" : "No elegido aún"} </Button>
+        <Button size="small">Leeer Más</Button>
+      </CardActions>
+    </Card>
+   
   );
 }
 export default Item 

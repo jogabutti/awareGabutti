@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useContext} from 'react'
+import { CartContext } from '../../context/CartContext';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
@@ -11,6 +12,7 @@ import LightModeIcon from '@mui/icons-material/LightMode';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import ThumbDownIcon from '@mui/icons-material/ThumbDown';
 import { makeStyles } from '@mui/styles';
+import {ItemCount} from '../ItemCount/ItemCount'
 
 const useStyles = makeStyles({
     card:{
@@ -32,43 +34,41 @@ const useStyles = makeStyles({
     }
 })
 
-export const ItemDetail = ({
-    title,
-    need,
-    dificult,
-    precio,
-    image
-}) =>{
+export const ItemDetail = ({ title,stock, need, dificult, precio, prodId, image}) =>{
   const classes = useStyles();
-    return(
-      <Card sx={{ maxWidth: "90%"}} className={classes.card}>
-        <CardMedia
-          component="img"
-          height="450em"
-          image={image}
-          alt="plantas"
-        />
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
-            {title}
+  const {removeItems, addItems, clear, isInCart}= useContext(CartContext)
+
+  return(
+    <Card sx={{ maxWidth: "90%"}} className={classes.card}>
+      <CardMedia
+        component="img"
+        height="450em"
+        image={image}
+        alt="plantas"
+      />
+      <CardContent>
+        <Typography gutterBottom variant="h5" component="div">
+          {title}
+        </Typography>
+        <div className={classes.cardContent}>
+          <Typography variant="body2" color="text.secondary">
+            {need==="Sombra" ? <Brightness6Icon/> : <LightModeIcon/>}
           </Typography>
-          <div className={classes.cardContent}>
-            <Typography variant="body2" color="text.secondary">
-              {need==="Sombra" ? <Brightness6Icon/> : <LightModeIcon/>}
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
-              {dificult>2 ? <ThumbDownIcon/> : <ThumbUpIcon/> }
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
-              <AttachMoneyIcon/>
-              {precio}
-            </Typography> 
-          </div>       
-        </CardContent>
-        <CardActions >
-          <Button size="small">Agregar al carrito</Button>
-          <Button size="small">Leeer Más</Button>
-        </CardActions>
-      </Card>
+          <Typography variant="body2" color="text.secondary">
+            {dificult>2 ? <ThumbDownIcon/> : <ThumbUpIcon/> }
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            <AttachMoneyIcon/>
+            {precio}
+          </Typography> 
+        </div>       
+      </CardContent>
+      <CardActions >
+        <ItemCount initial={0} stock={stock} addItems={addItems} prodId={prodId}/>
+        <Button size="small" onClick={()=>removeItems(prodId)}>Quitar del carrito</Button>
+        <Button size="small" onClick={()=>clear(prodId)}>Vaciar el carrito</Button>
+        <Button> {isInCart(prodId) ? "Ya elegido" : "No elegido aún"} </Button>
+      </CardActions>
+    </Card>
     )
 }

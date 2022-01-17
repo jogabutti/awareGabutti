@@ -31,21 +31,23 @@ const NavBar = ({titulo}) => {
     <AppBar position='static' >
       <Container maxWidth="xl" className={classes.navBar}>
         <Toolbar>
-            <IconButton
-              size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              color="inherit"
-            >
-              <img src='/logo.png' alt="plantas" style={{width:"60px", height:"60px", borderRadius: "100px"}}/>
-            </IconButton>
+            <Link to={`/`}>
+              <IconButton
+                size="large"
+                aria-label="account of current user"
+                aria-controls="menu-appbar"
+                aria-haspopup="true"
+                color="inherit"
+              >
+                <img src='/logo.png' alt="plantas" style={{width:"60px", height:"60px", borderRadius: "100px"}}/>
+              </IconButton>
+            </Link>
           <Box sx={{ flexGrow: 1, display:'flex' }}>
             {titulo}
           </Box>
           <Box sx={{ flexGrow: 1, display: { display: 'flex', direction:'row', justifyContent:'flex-end'  } }}>
-            {pages.map((page) => (
-              <Link to={page.address} className={classes.links}>
+            {pages.map((page,index) => (
+              <Link to={page.address} className={classes.links} key={index}>
                 {page.text}
               </Link>
             ))}

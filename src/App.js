@@ -2,8 +2,10 @@ import NavBar from "./components/NavBar"
 import ItemListContainer from './components/ItemListContainer'
 import ItemDetailCOntainer from './components/ItemDetailContainer/ItemDetailContainer'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { CartProvider } from "./context/CartContext"
 
 const App = () => (
+  <CartProvider>
     <BrowserRouter>
       <NavBar titulo='Aware' />
       <Routes>
@@ -13,9 +15,7 @@ const App = () => (
         <Route path="*" element={<h4> 404 - NOT FOUND</h4>}/>
       </Routes>
     </BrowserRouter>
+  </CartProvider>
 )
 
 export default App;
-
-//BrowserRouter todo lo que este dentro tiene navegacion
-//Routes evalua, funciona como el case

@@ -16,8 +16,8 @@ const ItemList = ({productos})=>{
     return(
         <div className={classes.card}>
             {productos.map(producto=>{
-                return <div>
-                            <Item producto={producto}/>
+                return <div key={producto.prodId} >
+                            <Item producto={producto} />
                         </div>
             })}
         </div>
