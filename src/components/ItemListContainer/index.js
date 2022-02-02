@@ -2,8 +2,8 @@ import React, {useEffect, useState} from 'react'
 import Typography from '@material-ui/core/Typography';
 import ItemList from "../ItemList/ItemList"
 import {useParams} from "react-router-dom"
-import {data} from "../../Productos/data"
-//lista de productos disponibles
+import { getFirestore } from '../../firebase'
+
 
 const ItemListContainer = ({greeting}) => {
     const [items, setItems]= React.useState({})
@@ -12,13 +12,15 @@ const ItemListContainer = ({greeting}) => {
     
     useEffect(() => {
         setLoading(true);
-        const productosPromise = new Promise ((res, rej)=>{
-            setTimeout(function(){
-                const myData = catId ? data.filter( item => item.category === catId) : data
-                res(myData);
-            }, 200);
-        });
-        productosPromise.then((res)=> setItems(res))
+        const db = getFirestore();
+        const productosCollections = db.collection("productos");
+        productosCollections.get()
+        .then(res=> {
+            let datos= res.docs.map(e =>{
+                return {...e.data(), prodId: e.id};
+            });
+            setItems(datos)
+        })
         .finally(()=> setLoading(false))
     }, [catId])
 

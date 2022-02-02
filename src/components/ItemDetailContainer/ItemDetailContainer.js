@@ -1,9 +1,9 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect} from 'react';
 import Typography from '@mui/material/Typography';
-import {ItemDetail} from "../ItemDetail/ItemDetail"
-import {useParams} from 'react-router-dom'
+import { ItemDetail} from "../ItemDetail/ItemDetail"
+import { useParams} from 'react-router-dom'
 import { makeStyles } from '@mui/styles';
-import {data} from "../../Productos/data"
+import { getFirestore } from '../../firebase'
 
 const useStyles = makeStyles({
     card:{
@@ -18,18 +18,21 @@ const ItemDetailContainer = ({greeting})=>{
     const [loading, setLoading]= useState(true)
     const { prodId } = useParams()
     
-    useEffect(() => {
+    useEffect(() => { 
         setLoading(true);
-        const productosPromise = new Promise ((res, rej)=>{
-            setTimeout(function(){
-                const myData = prodId ? data.find( item => item.prodId === prodId) : data
-                res(myData);
-            }, 200);
-        });
-        productosPromise.then((res)=> setItem(res))
+        const db = getFirestore();
+        const productosCollections = db.collection("productos");
+        productosCollections.get()
+        .then(res=> {
+            let datos= res.docs.map(e =>{
+                return {...e.data(), prodId: e.id};
+            });
+            const singleProd = datos.find((e) => e.prodId === prodId)
+            setItem(singleProd)
+        })
         .finally(()=> setLoading(false))
     }, [prodId]) 
-
+console.log(prodId, item)
     return(
         loading ? 
             <h2> CARGANDO...</h2> 
