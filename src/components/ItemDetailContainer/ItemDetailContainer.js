@@ -28,11 +28,10 @@ const ItemDetailContainer = ({greeting})=>{
                 return {...e.data(), prodId: e.id};
             });
             const singleProd = datos.find((e) => e.prodId === prodId)
-            setItem(singleProd)
+            setItem({"producto":singleProd})
         })
         .finally(()=> setLoading(false))
     }, [prodId]) 
-console.log(prodId, item)
     return(
         loading ? 
             <h2> CARGANDO...</h2> 

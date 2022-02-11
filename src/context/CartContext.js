@@ -6,13 +6,17 @@ export const CartProvider = ({children})=>{
     const [carrito, setCarrito] = useState([])
 
     const removeItems = (prodId)=>{
-        const foundItem = carrito.find((carr)=>carr.prodId===prodId)
+        const foundItem = carrito.find((carr)=>carr.prodId === prodId)
         if (foundItem){
-            foundItem.cantidad = foundItem.cantidad -1
-            setCarrito([...carrito])
+            if (foundItem.cantidad===1){
+                clear(prodId)
+            } else {
+                foundItem.cantidad = foundItem.cantidad -1
+                setCarrito([...carrito])
+            }
         }
     }
-    
+        
     const clear = (prodId)=>{
         const auxArr = carrito.filter((producto=>producto.prodId !== prodId))
         setCarrito(auxArr)

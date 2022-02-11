@@ -6,6 +6,7 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import Grid from '@mui/material/Grid';
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import Brightness6Icon from '@mui/icons-material/Brightness6';
 import LightModeIcon from '@mui/icons-material/LightMode';
@@ -24,7 +25,8 @@ const useStyles = makeStyles({
         margin:"2%"
     },
     cardContent:{
-      display:"flex",
+      width:"100%",
+      display:"flex-wrap",
       direction:"column",
       justifyContent:"center",
       alignItems:"center",
@@ -34,7 +36,7 @@ const useStyles = makeStyles({
     }
 })
 
-export const ItemDetail = ({ title,stock, need, dificult, precio, prodId, image}) =>{
+export const ItemDetail = ({ producto}) =>{
   const classes = useStyles();
   const {removeItems, addItems, clear, isInCart}= useContext(CartContext)
 
@@ -43,32 +45,34 @@ export const ItemDetail = ({ title,stock, need, dificult, precio, prodId, image}
       <CardMedia
         component="img"
         height="450em"
-        image={image}
+        image={producto.image}
         alt="plantas"
       />
       <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
-          {title}
+        <Typography gutterBottom variant="h2" component="div">
+          {producto.title}
         </Typography>
         <div className={classes.cardContent}>
           <Typography variant="body2" color="text.secondary">
-            {need==="Sombra" ? <Brightness6Icon/> : <LightModeIcon/>}
+            {producto.need==="Sombra" ? <Brightness6Icon/> : <LightModeIcon/>}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {dificult>2 ? <ThumbDownIcon/> : <ThumbUpIcon/> }
+            {producto.dificult>2 ? <ThumbDownIcon/> : <ThumbUpIcon/> }
           </Typography>
           <Typography variant="body2" color="text.secondary">
             <AttachMoneyIcon/>
-            {precio}
+            {producto.precio}
           </Typography> 
-        </div>       
+        </div>  
+        <CardActions >
+          <div className={classes.cardContent}>
+            <ItemCount initial={0} stock={producto.stock} addItems={addItems} producto={producto}/>
+            <Button size="small" onClick={()=>removeItems(producto.prodId)}>Quitar del carrito</Button>
+            <Button size="small" onClick={()=>clear(producto.prodId)}>Vaciar el carrito</Button>
+            <Button> {isInCart(producto.prodId) ? "Ya elegido" : "No elegido aún"} </Button>
+          </div>
+        </CardActions>
       </CardContent>
-      <CardActions >
-        <ItemCount initial={0} stock={stock} addItems={addItems} prodId={prodId}/>
-        <Button size="small" onClick={()=>removeItems(prodId)}>Quitar del carrito</Button>
-        <Button size="small" onClick={()=>clear(prodId)}>Vaciar el carrito</Button>
-        <Button> {isInCart(prodId) ? "Ya elegido" : "No elegido aún"} </Button>
-      </CardActions>
     </Card>
     )
 }
