@@ -5,7 +5,7 @@
 
 [![Build Status](	https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/jogabutti) [![Build Status](	https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/maria-jose-gabutti/)
 
-[![Build Status](https://firebasestorage.googleapis.com/v0/b/aware2-634b4.appspot.com/o/logo.png?alt=media&token=b950a25e-f56a-49c6-aee3-6c4b7f283a55)](https://mazu-store.web.app/) 
+[![Build Status](https://firebasestorage.googleapis.com/v0/b/aware2-634b4.appspot.com/o/logo.png?alt=media&token=b950a25e-f56a-49c6-aee3-6c4b7f283a55)](https://awareplantas.netlify.app/) 
 
 Aware Plantas y Plantines es un e-commerce para la venta de plantas de interior y exterior. El proyecto final para el curso de React de CODER HOUSE, desarrollado por Maria Jose Gabutti, en el cual se aplica todo lo visto durante el curso: 
 
