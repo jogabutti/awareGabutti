@@ -14,7 +14,8 @@ const useStyles = makeStyles({
 
 const ItemDetailContainer = ({greeting})=>{
     const classes = useStyles();
-    const [item, setItem]= React.useState({})
+    const [item, setItem]= useState({})
+    const [error, setError]= useState("")
     const [loading, setLoading]= useState(true)
     const { prodId } = useParams()
     
@@ -30,8 +31,13 @@ const ItemDetailContainer = ({greeting})=>{
             const singleProd = datos.find((e) => e.prodId === prodId)
             setItem({"producto":singleProd})
         })
+        .catch((rej)=>{
+            setError(rej)
+            console.log("ERROR: ", error)
+        })
         .finally(()=> setLoading(false))
     }, [prodId]) 
+
     return(
         loading ? 
             <h2> CARGANDO...</h2> 
@@ -40,7 +46,11 @@ const ItemDetailContainer = ({greeting})=>{
             <Typography variant="h4" gutterBottom >
                 {greeting}
             </Typography>
-            <ItemDetail {...item}/>
+            {item.producto ? 
+                <ItemDetail {...item}/>
+            :
+                <p> Error al encontrar el producto</p>
+            }
         </div>
     )
 }

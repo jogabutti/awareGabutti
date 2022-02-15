@@ -16,7 +16,6 @@ export const CartProvider = ({children})=>{
             }
         }
     }
-        
     const clear = (prodId)=>{
         const auxArr = carrito.filter((producto=>producto.prodId !== prodId))
         setCarrito(auxArr)

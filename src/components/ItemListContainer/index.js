@@ -16,10 +16,18 @@ const ItemListContainer = ({greeting}) => {
         const productosCollections = db.collection("productos");
         productosCollections.get()
         .then(res=> {
-            let datos= res.docs.map(e =>{
-                return {...e.data(), prodId: e.id};
-            });
-            setItems(datos)
+            if (catId){
+                let datos= res.docs.map(e =>{
+                    return {...e.data()};
+                });
+                let data=datos.filter(item=>item.category===catId)
+                setItems(data)
+            } else { 
+                let datos= res.docs.map(e =>{
+                    return {...e.data(), prodId: e.id};
+                });
+                setItems(datos)
+            }
         })
         .finally(()=> setLoading(false))
     }, [catId])

@@ -9,17 +9,13 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-
-const TAX_RATE = 0.07;
+import UserForm from '../UserForm/index'
 
 const useStyles = makeStyles({
   table: {
     minWidth: 700,
   },
 });
-
-
-
 
 const Cart = ({greeting}) => {
     const classes = useStyles();
@@ -37,7 +33,7 @@ const Cart = ({greeting}) => {
     
     return (
         <div>
-            {carrito.length>0 ? 
+            {carrito.length > 0 ? 
                 <>
                     <Typography variant="h4" gutterBottom >
                         {greeting}
@@ -85,13 +81,14 @@ const Cart = ({greeting}) => {
                         
                         </TableBody>
                     </Table>
-                    </TableContainer>
+                    </TableContainer >
+                    <UserForm carrito={carrito}/>
             </>
             :
                     <div>
                         <h2>Carrito vacio</h2>
                         <span>
-                            <img src='/Cart.png'/>
+                            <img src='/Cart.png' alt="carrito"/>
                         </span>
                     </div>
             }
